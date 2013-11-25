@@ -50,22 +50,9 @@ ranges_2080_ccsm_maxent<-  proyect_maxent (variables_ccsm2080)
 ranges_2080_ccsm_maha<-    proyect_maha (variables_ccsm2080)
 
 #### read maps, cut them (buffer, continents), run tests
+
 map_bioclim<- predict (res[[i]][[1]][2]$bioclim, variables_0)
-plot (map_bioclim)
-str (map_bioclim)
-
-
-kk<- raster ("C:/Users/Alunos/Documents/BrunoVilela/Sara/climatic layers/climatic layers/CCSM_21/bio1.bil")
-str (kk)
-plot(kk)
-?raster
-(variables_0[[1]])@data@values
-ranges_0_ccsm_bioclim<-
-
-
 map_bioclim_reclass<- reclassify (map_bioclim, c(-Inf, 0.05, 0, 0.05, 1, 1))
-
-
 model_maha<- mahal (calibration_variables, calibration_occ)
 map_maha<- predict (model_maha, calibration_variables)
 t<- quantile (extract (map_maha, validation_occ), na.rm=T, 0.05)
